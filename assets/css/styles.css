@@ -14,8 +14,8 @@
   --text-color-light: hsl(var(--hue), 4%, 55%);
 
   /*Green gradient*/
-  --body-color: linear-gradient(90deg, hsl(104, 28%, 40%) 0%, hsl(58, 28%, 40%) 100%);
-  --container-color: linear-gradient(136deg, hsl(104, 28%, 35%) 0%, hsl(58, 28%, 35%) 100%);
+  --body-color: linear-gradient(90deg, hsl(104, 29%, 50%) 0%, hsl(104, 29%, 50%) 100%);
+  --container-color: linear-gradient(136deg, hsl(104, 29%, 50%) 0%, hsl(104, 29%, 50%) 100%);
   
   /*Red gradient*/
   /* --body-color: linear-gradient(90deg, hsl(360, 28%, 40%) 0%, hsl(18, 28%, 40%) 100%);
@@ -256,20 +256,25 @@ button{
 }
 
 /*=============== HOME ===============*/
-.home__content{
+/* .home__content{
   row-gap: 1rem;
-}
+} */
 
-.home__group{
+/* .home__group{
   display: grid;
   position: relative;
   padding-top: 2rem;
-}
+} */
 
-.home__img{
+/* .home__data{
+  display: grid;
+  position: relative;
+  padding-top: 2rem;
+} */
+/* .home__img{
   height: 250px;
   justify-self: center;
-}
+} */
 
 .home__indicator{
   width: 8px;
@@ -312,11 +317,12 @@ button{
 .home__title{
   font-size: var(--biggest-font-size);
   font-weight: var(--font-black);
-  line-height: 109%;
+  line-height: 0%;
   margin-bottom: var(--mb-1);
 }
 
 .home__description{
+  padding-top: 27px;
   margin-bottom: var(--mb-1);
 }
 
@@ -459,6 +465,13 @@ button{
     color: white;
 }
 
+.product-section{
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+}
+
 .container {
     padding: 0 16px;
 }
@@ -492,6 +505,7 @@ button{
 
 .container2 {
     padding: 0 16px;
+    
 }
 
 .container2::after,
@@ -703,11 +717,12 @@ button{
 }
 
 .newsletter__form{
-  background: var(--container-color);
+  background: #474e5d;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
   border-radius: .75rem;
+
 }
 
 .newsletter__input{
