@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Bulls Parking</title>
+        <style>
+      body {
+        background-color: #f5f5f5;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        color: #00b30c;
+        font-size: 48px;
+        margin-bottom: 24px;
+        text-align: center;
+        text-shadow: 2px 2px #666;
+      }
+
+      form {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 2px 2px 10px #666;
+        margin: 0 auto;
+        max-width: 600px;
+        padding: 24px;
+      }
+
+      label {
+        display: block;
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      input[type="text"], input[type="email"], select {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 18px;
+        padding: 8px;
+        width: 100%;
+      }
+
+      input[type="submit"] {
+        background-color: #00b30c;
+        border: none;
+        border-radius: 25px;
+        color: #fff;
+        cursor: pointer;
+        font-size: 24px;
+        margin-top: 24px;
+        padding: 12px 24px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.2s;
+        width: 100%;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #00b30c;
+      }
+    </style>
+    </head>
+    <body>
+        <h1>Bulls Parking</h1>
+        <form action="{{ url_for('booking') }}" method="post" >
+            <label for="name">Name:</label>
+            <input value={{name}} type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input value={{email}} type="email" id="email" name="email" required>
+
+            <label for="phone">Phone number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="license-plate">License Plate Number:</label>
+            <input type="text" id="license-plate" name="license-plate" required>
+            <label for="type">Select a type:</label>
+            <select id="type" name="type">
+                <option value="">--User Type--</option>
+                <option value="Employee">Employee</option>
+                <option value="Student">Student</option>
+                <option value="Visitor">Visitor</option>
+            </select>
+
+            <label for="parking-duration">Parking Duration in Hours:</label>
+            <select id="parking-duration" name="parking-duration">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+
+            <label for="slots-availability">Slots Availability:</label>
+            <select id="slots" name="slots">
+              <option value = {{available_slots[0][0]}} >{{available_slots[0][0]}}</option>
+              <option  value = {{available_slots[0][0]}} >{{available_slots[1][0]}}</option>
+              <option  value = {{available_slots[0][0]}}  >{{available_slots[2][0]}}</option>
+              <option value = {{available_slots[0][0]}}  >{{available_slots[3][0]}}</option>
+            </select>
+
+            <input type="submit" value="Book Now">
+        </form>
+        <div class="error">{{errors}}</div>
+    </body>
+</html>

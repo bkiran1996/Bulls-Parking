@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Parking Slots Dashboard</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <style>
+    #booknow {
+      background-color: #7a4747;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: none;
+      color: white;
+      padding: 12px 24px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 20px auto 0;
+      border-radius: 25px;
+      cursor: pointer;
+
+    }
+
+    .chart-container {
+      width: 50%;
+      /* Set the initial width of the chart container to 50% */
+    }
+
+
+
+    @media (max-width: 768px) {
+
+      /* Set the width of the chart container to 100% when the screen width is less than or equal to 768px */
+      .chart-container {
+        width: 100%;
+      }
+    }
+
+    #booknow:hover {
+      background-color: #00b30c;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 style="text-align:center">Parking Slots Dashboard</h1>
+  <div style="display:flex; justify-content: space-evenly;">
+    <div class="chart-container">
+      <div class="row">
+        <div class="column">
+          <canvas id="parking-chart" width="400" height="400"></canvas>
+          <button id="booknow" onclick="bookNow()">Book Now</button>
+        </div>
+        <div class="column">
+          <canvas id="rates-chart" width="400" height="400"></canvas>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    new Chart(document.getElementById("parking-chart"), {
+      type: 'pie',
+      data: {
+        labels: ["Available", "Booked"],
+        datasets: [
+          {
+            label: "Parking slots status",
+            backgroundColor: ["#00e016", "#483519"],
+            data: [50, 10]
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Parking slots availability'
+        },
+        tooltips: {
+          callbacks: {
+            label: function (tooltipItem, data) {
+              var label = data.labels[tooltipItem.index] || '';
+              if (label) {
+                label += ': ';
+              }
+              label += data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+              if (tooltipItem.index === 0) {
+                label += ' slots available. Click to book now!';
+              }
+              return label;
+            }
+          }
+        }
+      }
+    });
+
+    new Chart(document.getElementById("rates-chart"), {
+      type: 'bar',
+      data: {
+        labels: ["Employee", "Students", "Visitor"],
+        datasets: [
+          {
+            label: "Rates",
+            backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f"],
+            data: [20, 30, 50]
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Rate Chart'
+        },
+        legend: {
+          display: false
+        },
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+
+    function bookNow() {
+      window.location.href = "Book_now.html";
+    }
+  </script>
+</body>
+
+</html>
